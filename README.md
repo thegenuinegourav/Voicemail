@@ -1,1 +1,1 @@
-# Voicemail ![Voicemail Logo](/app/src/main/res/drawable/voicemail.png)
+# Voicemail ![Voicemail Logo](/app/src/main/res/mipmap-xhdpi/ic_launcher.png)
