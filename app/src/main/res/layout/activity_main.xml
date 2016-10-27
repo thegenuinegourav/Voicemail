@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#faa519"
+    android:orientation="vertical"
+    android:onClick = "layoutClicked"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="#e8e8e7"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Status"
+            android:textColor="#2582C5"
+            android:layout_marginLeft="25dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/status"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/graybackground">
+
+        <ImageView android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/voicemail"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:text="To:"
+            android:textColor="#4C4D4F"
+            android:background="#f3f3f3"
+            android:paddingTop="7dp"
+            android:paddingLeft="7dp"
+            android:id="@+id/to"
+            android:layout_marginTop="30dp"/>
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:text="Subject:"
+            android:background="#f3f3f3"
+            android:id="@+id/subject"
+            android:paddingTop="7dp"
+            android:textColor="#4C4D4F"
+            android:paddingLeft="7dp"
+            android:layout_marginTop="15dp"/>
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="130dp"
+            android:text="Message:"
+            android:background="#f3f3f3"
+            android:id="@+id/message"
+            android:paddingTop="7dp"
+            android:textColor="#4C4D4F"
+            android:paddingLeft="7dp"
+            android:layout_marginTop="15dp"/>
+        <Button android:layout_width="190dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="submit"
+            android:textColor="#fff"
+            android:background="@drawable/btn"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+
+</LinearLayout>
