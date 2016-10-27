@@ -1,7 +1,7 @@
 ![Voicemail Logo](/app/src/main/res/mipmap-hdpi/ic_launcher.png)  
 #Voicemail  
   
-######__*Voice Based Email for (Blinds?)*__
+####__*Voice Based Email for (Blinds?)*__
 
 ###Description:ledger:    
 Voicemail is an android application designed for blinds to send mails by recognising their voice! Voicemail is smart enough to talk with users. Initially, it speaks a welcome message & afterwards, allows user to induce their answer. Certain commands like To, Subject, Message, Send, Cancel are implemented with user friendly interaction talks.  
@@ -21,9 +21,16 @@ Just config the [Config.java](/app/src/main/java/thegenuinegourav/voicemail/Conf
 ###ScreenShots  
 ![Screenshot1](/screenshots/screenshot1.png)  
   
-![Screenshot2](/screenshots/screenshot2.png)  
   
 ![Screenshot3](/screenshots/screenshot3.png)  
+  
+  
+![Screenshot2](/screenshots/screenshot2.png)  
+  
+  
+  
+  
+
 
 
 
