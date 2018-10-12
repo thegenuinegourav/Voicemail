@@ -22,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView status;
     private TextView To,Subject,Message;
     private int numberOfClicks;
+    private boolean IsInitialVoiceFinshed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        IsInitialVoiceFinshed = false ;
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -37,7 +38,12 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("TTS", "This Language is not supported");
                     }
                     speak("Welcome to voice mail. Tell me the mail address to whom you want to send mail?");
-
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            IsInitialVoiceFinshed=true;
+                        }
+                    }, 6000);
                 } else {
                     Log.e("TTS", "Initilization Failed!");
                 }
@@ -71,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void layoutClicked(View view)
     {
-        numberOfClicks++;
-        listen();
+        if(IsInitialVoiceFinshed) {
+            numberOfClicks++;
+            listen();
+        }
     }
 
     private void listen(){
@@ -109,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 100){
+        if(requestCode == 100&& IsInitialVoiceFinshed){
+            IsInitialVoiceFinshed = false;
             if (resultCode == RESULT_OK && null != data) {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 if(result.get(0).equals("cancel"))
@@ -118,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     exitFromApp();
                 }
                 else {
+
                     switch (numberOfClicks) {
                         case 1:
                             String to;
@@ -127,18 +137,31 @@ public class MainActivity extends AppCompatActivity {
                             To.setText(to);
                             status.setText("Subject?");
                             speak("What should be the subject?");
+
                             break;
                         case 2:
+
                             Subject.setText(result.get(0));
                             status.setText("Message?");
                             speak("Give me message");
                             break;
                         case 3:
                             Message.setText(result.get(0));
-                            status.setText("Confirm?");
-                            speak("Please Confirm the mail\n To : " + To.getText().toString() + "\nSubject : " + Subject.getText().toString() + "\nMessage : " + Message.getText().toString() + "\nSpeak Yes to confirm");
+                            status.setText("ur mail");
+                            speak("Give ur mail address");
                             break;
-                        case 4:
+                        case 4 :
+                             Config.EMAIL=result.get(0);
+                             status.setText("password");
+                             speak("provide ur pasword");
+                             break;
+                        case 5 :
+                            Config.PASSWORD =result.get(0);
+                            status.setText("Confirm?");
+                            speak("Please Confirm the mail\n To : " + To.getText().toString() + "\nSubject : " + Subject.getText().toString() + "\nMessage : " + Message.getText().toString() +"your mail "+Config.EMAIL+"your password" +Config.PASSWORD + "\nSpeak Yes to confirm");
+                            break;
+
+                        default:
                             if(result.get(0).equals("yes"))
                             {
                                 status.setText("Sending");
@@ -156,8 +179,33 @@ public class MainActivity extends AppCompatActivity {
                                 }, 4000);
                             }
                     }
+
                 }
             }
+            else {
+                switch (numberOfClicks) {
+                    case 1:
+                        speak(" whom you want to send mail?");
+                        break;
+                    case 2:
+                        speak("What should be the subject?");
+                        break;
+                    case 3:
+                        speak("Give me message");
+                        break;
+                    case 4:
+                        speak("provide ur mail");
+                        break;
+                    case 5:
+                        speak("provide ur password");
+                        break;
+                    default:
+                        speak("say yes or no");
+                        break;
+                }
+                numberOfClicks--;
+            }
         }
+        IsInitialVoiceFinshed=true;
     }
 }
