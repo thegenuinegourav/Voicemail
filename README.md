@@ -16,6 +16,9 @@ Just config the [Config.java](/app/src/main/java/thegenuinegourav/voicemail/Conf
 1. [Text To Speech](https://github.com/thegenuinegourav/Text-To-Speech-App)
 2. [Voice Recognition](https://github.com/thegenuinegourav/Voice-Recognition)
 3. [Javamail Api](https://github.com/thegenuinegourav/Android-Email-App-using-Javamail-Api)  
+
+## Authors
+* **Gourav Suri**  - [thegenuinegourav](https://github.com/thegenuinegourav) 
   
   
 ### ScreenShots  
